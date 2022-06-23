@@ -12,8 +12,11 @@ function Edit() {
     // to set and get values from the jsx
     const [nome, setnome] = useState('');
     const [email, setemail] = useState('');
+    const [apelido, setapelido] = useState('');
+    const [nucleo, setnucleo] = useState('');
+    const [diretoria, setdiretoria] = useState('');
     const[id,setid] = useState('');
-  
+
     // used for navigation with logic in javascript
     let history = useNavigate()
       
@@ -31,6 +34,9 @@ function Edit() {
         // replacing it from existing for updation
         a.Nome = nome
         a.Email = email
+        a.Apelido = apelido
+        a.Nucleo = nucleo
+        a.Diretoria = diretoria
   
         // redirecting to main page
         history('/')
@@ -41,6 +47,9 @@ function Edit() {
     useEffect(() => {
         setnome(localStorage.getItem('Nome'))
         setemail(localStorage.getItem('Email'))
+        setnome(localStorage.getItem('Apelido'))
+        setemail(localStorage.getItem('Nucleo'))
+        setnome(localStorage.getItem('Diretoria'))
         setid(localStorage.getItem('id'))
     }, [])
       
@@ -61,7 +70,21 @@ function Edit() {
                               onChange={e => setemail(e.target.value)} 
                               type="text" placeholder="Email" />
             </Form.Group>
-  
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Control value={apelido} 
+                              onChange={e => setapelido(e.target.value)} 
+                              type="text" placeholder="Apelido" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Control value={nucleo} 
+                              onChange={e => setnucleo(e.target.value)} 
+                              type="text" placeholder="Núcleo" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Control value={diretoria} 
+                              onChange={e => setdiretoria(e.target.value)} 
+                              type="text" placeholder="Diretoria" />
+            </Form.Group>
             {/* Hadinling an onclick event running an edit logic */}
             <Button
             onClick={e => handelSubmit(e)}

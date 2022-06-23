@@ -10,10 +10,14 @@ function Home() {
   
   // You may skip this part if you're
   // using react-context api or redux
-  function setID(id,nome,email){
+  function setID(id,nome,email, apelido, nucleo, diretoria){
     localStorage.setItem('id', id);
     localStorage.setItem('Nome', nome);
     localStorage.setItem('Email', email);
+    localStorage.setItem('Apelido', apelido);
+    localStorage.setItem('Nucleo', nucleo);
+    localStorage.setItem('Diretoria', diretoria);
+
   }
   
   // Deleted function - functionality 
@@ -37,6 +41,9 @@ function Home() {
     <tr>
       <th>Nome</th>
       <th>Email</th>
+      <th>Apelido</th>
+      <th>Núcleo</th>
+      <th>Diretoria</th>
     </tr>
   </thead>
   <tbody>
@@ -48,11 +55,15 @@ return(
 <tr>
       <td>{item.Nome}</td>
       <td>{item.Email}</td>
+      <td>{item.Apelido}</td>
+      <td>{item.Nucleo}</td>
+      <td>{item.Diretoria}</td>
+      
         
       {/* getting theid,name, and age for storing these
           value in the jsx with onclick event */}
       <td><Link to={`/edit`}><Button onClick={(e) =>
-      setID(item.id,item.Nome,item.Email)} variant="info">
+      setID(item.id,item.Nome,item.Email,item.Apelido,item.Nucleo,item.Diretoria)} variant="info">
         Atualizar</Button></Link></td>
   
       {/* Using thr deleted function passing
