@@ -1,28 +1,25 @@
-
+import React from 'react'
+import { BrowserRouter as Router,Route, Routes }
+    from 'react-router-dom';
 import './App.css';
-import Create from './components/create';
-import Read from './components/read';
-import Update from './components/update';
-
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-
+import Create from './components/Create';
+import Edit from './components/Edit';
+import Home from './components/Home';
+  
 function App() {
   return (
-    <Router>
-      <div className="main">
-        <h2 className="main-header">Login</h2>
-        <div>
-        <Route exact path='/create' component={Create} />
-        </div>
-
-        <div style={{ marginTop: 20 }}>
-          <Route exact path='/read' component={Read} />
-        </div>
-
-        <Route path='/update' component={Update} />
-      </div>
+    <div className='App'>
+  
+     <Router>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/create' element={<Create/>}/>
+        <Route path='/edit' element={<Edit/>}/>
+      </Routes>
     </Router>
-  );
+  </div>
+);
+  
 }
-
+  
 export default App;
