@@ -8,8 +8,6 @@ function Home() {
   
   let history = useNavigate()
   
-  // You may skip this part if you're
-  // using react-context api or redux
   function setID(id,nome,email, apelido, nucleo, diretoria){
     localStorage.setItem('id', id);
     localStorage.setItem('Nome', nome);
@@ -20,17 +18,12 @@ function Home() {
 
   }
   
-  // Deleted function - functionality 
-  // for deleting the entry
   function deleted(id){
       
     var index = array.map(function(e) { return e.id; }).indexOf(id);
   
-    // deleting the entry with index
     array.splice(index,1)
   
-    // We need to re-render the page for getting 
-    // the results so redirect to same page.
     history('/')
   }
   
@@ -47,9 +40,6 @@ function Home() {
     </tr>
   </thead>
   <tbody>
-  
-    {/* Mapping though every element in the array
-    and showing the data in the form of table */}
     {array.map((item) => {
 return(
 <tr>
@@ -60,14 +50,11 @@ return(
       <td>{item.Diretoria}</td>
       
         
-      {/* getting theid,name, and age for storing these
-          value in the jsx with onclick event */}
       <td><Link to={`/edit`}><Button onClick={(e) =>
       setID(item.id,item.Nome,item.Email,item.Apelido,item.Nucleo,item.Diretoria)} variant="info">
         Atualizar</Button></Link></td>
   
-      {/* Using thr deleted function passing
-       the id of an entry */}
+
       <td><Button onClick={e => deleted(item.id)} 
       variant="danger">Deletar</Button></td>
     </tr>
@@ -75,8 +62,7 @@ return(
   </tbody>
 </Table>
   
-{/* Button for redirecting to create page for
-   insertion of values */}
+
 <Link className="d-grid gap-2" to='/create'>
   <Button variant="warning" size="lg">Criar</Button>
 </Link>
